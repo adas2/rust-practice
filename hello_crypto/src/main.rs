@@ -1,7 +1,6 @@
 extern crate openssl;
 
 use openssl::asn1::Asn1Time;
-// use openssl::bn::BigNum;
 use openssl::pkey::PKey;
 use openssl::rsa::Rsa;
 use openssl::x509::extension::{ExtendedKeyUsage, KeyUsage};
@@ -61,27 +60,6 @@ fn main() {
 
     x509_builder.append_extension(ext1).unwrap();
     x509_builder.append_extension(ext2).unwrap();
-
-    /*
-
-        // Optional: Set the key usage extensions
-        x509_builder
-            .set_extension(
-                openssl::x509::extension::KeyUsage::new()
-                    .digital_signature()
-                    .key_encipherment()
-                    .build(),
-            )
-            .unwrap();
-        x509_builder
-            .set_extension(
-                openssl::x509::extension::ExtendedKeyUsage::new()
-                    .server_auth()
-                    .build(),
-            )
-            .unwrap();
-
-    */
 
     // Sign the certificate with issuer private key
     x509_builder
